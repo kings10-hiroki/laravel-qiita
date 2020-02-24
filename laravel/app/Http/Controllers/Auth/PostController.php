@@ -20,6 +20,20 @@ class PostController extends Controller
         return view('top', compact('articles'));
     }
 
+    public function search(Request $request)
+    {
+        // 「バリデーション」
+        $request->validate([
+            'search' => 'required|max:255',
+        ]);
+
+        // 「本文にキーワードが含まれる記事を取り出す」
+        $articles = Post::where('title','like','%'.$request->search.'%')->get();
+
+        // 「その記事をビューに返す」
+        return view('top', compact('articles'));
+    }
+
     public function postArticle(Request $request)
     {
         $request->validate([

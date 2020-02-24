@@ -13,8 +13,10 @@
                 <a href="#" class="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">コミュニティ</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0 ml-2">
-            <input type="search" class="form-control mr-sm-2" placeholder="キーワードを入力" aria-label="検索...">
+        <form class="form-inline my-2 my-lg-0 ml-2" action="{{ route('search') }}" method="GET">
+            @csrf
+            <input type="search" class="form-control mr-sm-2" name="search" placeholder="キーワードを入力">
+            <button type="submit" class="text-white search-btn"><i class="fas fa-search"></i>検索</button>
         </form>
 
         <ul class="navbar-nav ml-auto mr-5">
@@ -23,7 +25,9 @@
                 <a href="#" class="nav-link text-white">ストック一覧</a>
             </li>
             <li class="nav-item ml-2">
-                <a class="nav-link text-white" id="post-link" href="/drafts/new">投稿する</a>
+                <a class="nav-link text-white" id="post-link" href="/drafts/new">
+                    <i class="fas fa-edit"></i>投稿する
+                </a>
             </li>
             <li class="nav-item ml-2">
                 <a href="#" class="nav-link text-white">0</a>

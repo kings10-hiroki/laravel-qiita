@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'Auth\PostController@showTopPage')->name('top');
+Route::get('/search', 'Auth\PostController@search')->name('search');
 
 Auth::routes();
 
