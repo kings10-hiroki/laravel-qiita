@@ -51,6 +51,8 @@
                         <div class="article-date">
                             {{ $article->created_at }}
                         </div>
+                            <i class="far fa-thumbs-up"></i>
+                            {{ $article->likes_count }}
                     </div>
                 </div>
             </div>

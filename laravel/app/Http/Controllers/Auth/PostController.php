@@ -61,6 +61,8 @@ class PostController extends Controller
     public function showArticle($id)
     {
         $article = Post::where('id', $id)->first();
-        return view('auth.item', compact('article'));
+
+        $like = $article->likes()->where('user_id', Auth::user()->id)->first();
+        return view('auth.item', compact('article', 'like'));
     }
 }

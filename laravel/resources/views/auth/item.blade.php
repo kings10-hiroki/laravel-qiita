@@ -17,6 +17,23 @@
                 <div class="item-tag">{{ $article->tag3 }}</div>
             @endif
         </div>
+        @if (Auth::check())
+            @if ($like)
+                {{ Form::model($article, array('action' => array('LikesController@destroy', $article->id, $like->id))) }}
+                    <button type="submit">
+                        <img src="/images/heart-pink.svg">
+                        Like {{ $article->likes_count }}
+                    </button>
+                {!! Form::close() !!}
+            @else
+                {{ Form::model($article, array('action' => array('LikesController@store', $article->id))) }}
+                    <button type="submit">
+                        <img src="/images/heart-gray.svg">
+                        Like {{ $article->likes_count }}
+                    </button>
+                {!! Form::close() !!}
+            @endif
+        @endif
         <div class="item-body">{{ $article->body }}</div>
     </div>
 </div>
